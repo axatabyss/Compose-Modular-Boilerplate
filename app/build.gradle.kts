@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -40,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.8"
     }
     packaging {
         resources {
@@ -66,6 +68,11 @@ dependencies {
     implementation(Dependencies.composeUiToolingPreview)
     implementation(Dependencies.composeMaterial3)
     implementation(Dependencies.navigationCompose)
+
+    // Dependency Injection
+    implementation(Dependencies.hiltAndroid)
+    ksp(Dependencies.hiltCompiler)
+    ksp(Dependencies.hiltAndroidCompiler)
 
     // Testing
     implementation(Dependencies.junitExt)
