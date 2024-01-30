@@ -15,6 +15,10 @@ object Versions {
     // DI
     const val daggerHilt = "2.50"
 
+    // Navigation
+    const val composeNavigation = "2.7.6"
+    const val daggerHiltNavigation = "1.1.0"
+
 
     // Testing
     const val junitExt = "1.1.5"

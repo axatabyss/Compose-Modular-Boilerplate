@@ -74,6 +74,12 @@ dependencies {
     ksp(Dependencies.hiltCompiler)
     ksp(Dependencies.hiltAndroidCompiler)
 
+
+    // Navigation
+    implementation(Dependencies.hiltNavigation)
+    implementation(Dependencies.composeNavigation)
+
+
     // Testing
     implementation(Dependencies.junitExt)
     implementation(Dependencies.espressoCore)
