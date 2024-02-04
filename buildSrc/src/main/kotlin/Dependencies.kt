@@ -27,6 +27,16 @@ object Dependencies {
     val composeNavigation by lazy { "androidx.navigation:navigation-compose:${Versions.composeNavigation}" }
     val hiltNavigation by lazy { "androidx.hilt:hilt-navigation-compose:${Versions.daggerHiltNavigation}" }
 
+    // Network
+    val retrofit by lazy { "com.squareup.retrofit2:retrofit:${Versions.retrofit}" }
+    val converterMoshi by lazy { "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}" }
+    val loggingInterceptor by lazy { "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}" }
+    val moshi by lazy { "com.squareup.moshi:moshi:${Versions.moshi}" }
+    val moshiKotlinCodegen by lazy { "com.squareup.moshi:moshi-kotlin-codegen:${Versions.moshi}" }
+    val flower by lazy { "io.github.hadiyarajesh.flower-retrofit:flower-retrofit:${Versions.flower}" }
+    val coil by lazy { "io.coil-kt:coil-compose:${Versions.coil}" }
+
+
 
 
     // Testing

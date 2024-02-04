@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -20,6 +22,12 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+
+        val properties = Properties()
+        properties.load(project.rootProject.file("local.properties").inputStream())
+        buildConfigField("String", "API_KEY", properties.getProperty("API_KEY"))
+
     }
 
     buildTypes {
@@ -40,6 +48,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.8"
@@ -69,15 +78,30 @@ dependencies {
     implementation(Dependencies.composeMaterial3)
     implementation(Dependencies.navigationCompose)
 
-    // Dependency Injection
-    implementation(Dependencies.hiltAndroid)
-    ksp(Dependencies.hiltCompiler)
-    ksp(Dependencies.hiltAndroidCompiler)
-
 
     // Navigation
     implementation(Dependencies.hiltNavigation)
     implementation(Dependencies.composeNavigation)
+
+    // Network
+    implementation(Dependencies.retrofit)
+    implementation(Dependencies.converterMoshi)
+    implementation(Dependencies.loggingInterceptor)
+    implementation(Dependencies.moshi)
+    ksp(Dependencies.moshiKotlinCodegen)
+    implementation(Dependencies.coil) {
+        because("An image loading library for Android backed by Kotlin Coroutines")
+    }
+    implementation(Dependencies.flower) {
+        because("Flower simplifies networking and database caching on Android/Multiplatform")
+    }
+
+
+
+    // Dependency Injection
+    implementation(Dependencies.hiltAndroid)
+    ksp(Dependencies.hiltCompiler)
+    ksp(Dependencies.hiltAndroidCompiler)
 
 
     // Testing
