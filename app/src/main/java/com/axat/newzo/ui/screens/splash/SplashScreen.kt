@@ -1,11 +1,9 @@
-package com.axat.newzo.ui.screens
+package com.axat.newzo.ui.screens.splash
 
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -22,20 +20,28 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.axat.newzo.ui.navigation.NavigationRoute
 
 
 @Composable
 fun SplashScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavController
 ) {
 
 
     val color = remember { Animatable(Color.White) }
 
     LaunchedEffect(Unit) {
-        color.animateTo(Color.Red.copy(alpha = 0.6f), animationSpec = tween(5000))
+        color.animateTo(
+            targetValue = Color.Red.copy(alpha = 0.6f),
+            animationSpec = tween(1000),
+        ).apply {
+            navController.navigate(NavigationRoute.DASHBOARD_SCREEN)
+        }
     }
 
     Scaffold(modifier = modifier.fillMaxSize()) { padding ->

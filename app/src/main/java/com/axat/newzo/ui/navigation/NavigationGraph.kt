@@ -1,28 +1,29 @@
 package com.axat.newzo.ui.navigation
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.axat.newzo.ui.screens.SplashScreen
+import com.axat.newzo.ui.screens.home.DashboardScreen
+import com.axat.newzo.ui.screens.splash.SplashScreen
 
 
 @Composable
 fun NavigationGraph() {
 
-    val nacController = rememberNavController()
+    val navController = rememberNavController()
 
 
     NavHost(
-        navController = nacController,
+        navController = navController,
         startDestination = NavigationRoute.SPLASH_SCREEN,
     ) {
 
         composable(NavigationRoute.SPLASH_SCREEN) {
-            BackHandler(true) {}
-            SplashScreen()
+            SplashScreen(navController = navController)
+        }
+        composable(NavigationRoute.DASHBOARD_SCREEN) {
+            DashboardScreen()
         }
 
     }
