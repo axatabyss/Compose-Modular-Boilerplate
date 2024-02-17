@@ -7,19 +7,19 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Article(
     @Json(name = "author")
-    val author: String = "",
+    val author: String? = "",
     @Json(name = "content")
-    val content: String = "",
+    val content: String? = null,
     @Json(name = "description")
-    val description: String = "",
+    val description: String? = null,
     @Json(name = "publishedAt")
-    val publishedAt: String = "",
+    val publishedAt: String? = null,
     @Json(name = "source")
     val source: Source = Source(),
     @Json(name = "title")
-    val title: String = "",
+    val title: String? = null,
     @Json(name = "url")
-    val url: String = "",
+    val url: String? = null,
     @Json(name = "urlToImage")
-    val urlToImage: String = ""
+    val urlToImage: String? = null
 )

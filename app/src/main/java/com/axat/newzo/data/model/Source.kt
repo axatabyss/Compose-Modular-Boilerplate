@@ -9,5 +9,5 @@ data class Source(
     @Json(name = "id")
     val id: Any? = null,
     @Json(name = "name")
-    val name: String = ""
+    val name: String? = null
 )
