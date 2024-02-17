@@ -92,17 +92,17 @@ fun DashboardScreen(
                 when (dashboardUiState) {
 
                     // Initial
-                    DashboardScreenUiState.Initial -> {
+                    is DashboardScreenUiState.Initial -> {
                         Box(
                             contentAlignment = Alignment.Center,
                             modifier = modifier.align(alignment = Alignment.CenterHorizontally)
                         ) {
-                            Text(text = "Initial Time")
+                            CircularProgressIndicator(modifier = modifier.size(20.dp), color = Color.Red.copy(alpha = 0.6f))
                         }
                     }
 
                     // Loading
-                    DashboardScreenUiState.Loading -> {
+                    is DashboardScreenUiState.Loading -> {
                         Box(
                             contentAlignment = Alignment.Center,
                             modifier = modifier.align(alignment = Alignment.CenterHorizontally)
@@ -126,9 +126,7 @@ fun DashboardScreen(
 
                         val newsUiState = dashboardUiState as DashboardScreenUiState.Success
 
-
-
-                        Spacer(modifier = modifier.height(20.dp))
+                        Spacer(modifier = modifier.height(10.dp))
 
                         Text(
                             text = "Top Headlines",
@@ -139,7 +137,7 @@ fun DashboardScreen(
                                 color = Color.Black,
                                 fontWeight = FontWeight.W600
                             ),
-                            modifier = modifier.padding(horizontal = 5.dp)
+                            modifier = modifier.padding(horizontal = 5.dp, vertical = 10.dp)
                         )
 
                         LazyRow {
@@ -194,7 +192,7 @@ fun NewsTopHeadlinesItem(
                 contentScale = ContentScale.FillHeight,
                 modifier = modifier
                     .clip(RoundedCornerShape(18.dp))
-                    .height(200.dp)
+                    .height(180.dp)
             )
 
             Spacer(modifier = modifier.height(5.dp))
