@@ -77,6 +77,7 @@ dependencies {
     implementation(Dependencies.composeUiToolingPreview)
     implementation(Dependencies.composeMaterial3)
     implementation(Dependencies.navigationCompose)
+    implementation(Dependencies.lifecycleRuntimeCompose)
 
 
     // Navigation

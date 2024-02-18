@@ -10,6 +10,7 @@ object Versions {
     const val activityCompose = "1.8.2"
     const val compose = "2024.02.00"
     const val navigationCompose = "2.7.6"
+    const val lifecycleRuntimeCompose = "2.7.0"
 
 
     // DI

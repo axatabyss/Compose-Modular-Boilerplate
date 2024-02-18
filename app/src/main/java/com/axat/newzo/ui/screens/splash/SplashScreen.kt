@@ -20,7 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.axat.newzo.ui.navigation.NavigationRoute
@@ -29,7 +29,7 @@ import com.axat.newzo.ui.navigation.NavigationRoute
 @Composable
 fun SplashScreen(
     modifier: Modifier = Modifier,
-    navController: NavController
+    navController: NavHostController
 ) {
 
 

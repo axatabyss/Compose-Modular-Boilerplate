@@ -16,6 +16,7 @@ object Dependencies {
     val composeUiToolingPreview by lazy { "androidx.compose.ui:ui-tooling-preview" }
     val composeMaterial3 by lazy { "androidx.compose.material3:material3" }
     val navigationCompose by lazy { "androidx.navigation:navigation-compose:${Versions.navigationCompose}" }
+    val lifecycleRuntimeCompose by lazy { "androidx.lifecycle:lifecycle-runtime-compose:${Versions.lifecycleRuntimeCompose}" }
 
 
     // Dependency Injection

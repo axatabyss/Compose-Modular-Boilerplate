@@ -1,5 +1,6 @@
 package com.axat.newzo.ui.screens.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -46,17 +47,22 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.axat.newzo.R
 import com.axat.newzo.data.model.Article
+import com.axat.newzo.ui.navigation.NavigationRoute
+import com.axat.newzo.utility.SharedViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DashboardScreen(
     modifier: Modifier = Modifier,
-    viewModel: DashboardViewModel = hiltViewModel()
+    viewModel: DashboardViewModel = hiltViewModel(),
+    sharedViewModel: SharedViewModel?,
+    navController: NavHostController
 ) {
 
     var dashboardUiState by remember {
@@ -142,7 +148,7 @@ fun DashboardScreen(
 
                         LazyRow {
                             items(newsUiState.newsTopHeadlines.articles) { article ->
-                                NewsTopHeadlinesItem(article)
+                                NewsTopHeadlinesItem(article, navController = navController, sharedViewModel = sharedViewModel!!)
                             }
                         }
 
@@ -150,7 +156,7 @@ fun DashboardScreen(
 
                         LazyColumn {
                             items(newsUiState.news.articles) { article ->
-                                NewsItem(article)
+                                NewsItem(article, navController = navController, sharedViewModel = sharedViewModel!!)
                             }
                         }
 
@@ -169,13 +175,20 @@ fun DashboardScreen(
 @Composable
 fun NewsTopHeadlinesItem(
     article: Article,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavHostController,
+    sharedViewModel: SharedViewModel
 ) {
 
     Box(
         modifier = modifier
             .width(280.dp)
             .padding(horizontal = 10.dp)
+            .clickable {
+                sharedViewModel.updateState(article).apply {
+                    navController.navigate(NavigationRoute.NEWS_DETAIL_SCREEN)
+                }
+            }
     ) {
 
         Column {
@@ -213,12 +226,21 @@ fun NewsTopHeadlinesItem(
 @Composable
 fun NewsItem(
     article: Article,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navController: NavHostController,
+    sharedViewModel: SharedViewModel
 ) {
 
-    Row(modifier = modifier
+    Row(
+        modifier = modifier
         .fillMaxWidth(1f)
-        .padding(horizontal = 10.dp, vertical = 10.dp)) {
+        .padding(horizontal = 10.dp, vertical = 10.dp)
+        .clickable {
+            sharedViewModel.updateState(article).apply {
+                navController.navigate(NavigationRoute.NEWS_DETAIL_SCREEN)
+            }
+        }
+    ) {
 
         AsyncImage(
             ImageRequest.Builder(LocalContext.current)
